@@ -1,0 +1,14 @@
+# Build results
+/result
+/result-*
+result
+
+# Nix / direnv
+.direnv/
+.envrc
+
+# Editors
+/.direnv
+*~
+.idea
+.vscode
