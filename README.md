@@ -22,8 +22,8 @@ nix develop
 source result/OpenFOAM-v2606/etc/bashrc
 
 blockMesh
-foamRun
-mpirun -np 4 foamRun -parallel
+simpleFoam
+mpirun -np 4 simpleFoam -parallel
 ```
 
 Three presets are provided:

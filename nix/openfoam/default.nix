@@ -542,8 +542,15 @@ stdenv.mkDerivation (finalAttrs: {
     # shellcheck disable=SC1091
     source "$out/${dirName}/etc/bashrc"
 
+    # Smoke-test the generated environment. `foamVersion` only exists as
+    # a test application source in v2606 (it is not installed), so use a
+    # real solver binary plus the environment variables that matter.
     blockMesh -help > /dev/null
-    foamVersion
+    simpleFoam -help > /dev/null
+    test -n "$WM_PROJECT_VERSION"
+    test -n "$FOAM_LIBBIN"
+    test -n "$FOAM_APPBIN"
+    test -x "$FOAM_APPBIN/simpleFoam"
 
     runHook postInstallCheck
   '';
